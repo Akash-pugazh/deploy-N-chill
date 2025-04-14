@@ -1,30 +1,21 @@
 import { BaseController } from "../base/base.controller.js";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+import { AccountService } from "../service/account.service.js";
 
-const users = {}; // Temporary storage (replace with a database)
-const SECRET_KEY = "your_secret_key"; // Use an environment variable in production!
+// Replace the hardcoded SECRET_KEY with an environment variable
+const SECRET_KEY = process.env.SECRET_KEY || "default_secret_key";
 
-export class UserController extends BaseController {
+export class AccountController extends BaseController {
     constructor() {
         super();
     }
 
     // 📝 User Registration
     async register(request, reply) {
-        const { firstName, lastName, email, password } = request.body;
         try {
-            if (users[email]) {
-                return reply.status(409).send({ error: "User already exists" });
-            }
-
-            // Hash password securely
-            const hashedPassword = crypto.createHash("sha256").update(password).digest("hex");
-            users[email] = { firstName, lastName, email, password: hashedPassword };
-
-            
-
-            return reply.send({ message: "User registered successfully" });
+            const createdUser = await AccountService.createUser(request);
+            return createdUser;
         } catch (err) {
             console.error("Error at UserController.register: ", err);
             return reply.status(500).send({ error: "Failed to register user" });
@@ -35,7 +26,8 @@ export class UserController extends BaseController {
     async login(request, reply) {
         const { email, password } = request.body;
         try {
-            const user = users[email];
+            const user = await AccountService.getUserByEmail(email); // Fetch user by email
+
             if (!user) {
                 return reply.status(404).send({ error: "User not found" });
             }
@@ -67,7 +59,7 @@ export class UserController extends BaseController {
     }
 }
 
-const controller = new UserController();
+const controller = new AccountController();
 
 export default async function (fastify, opts) {
     fastify.post('/register', {

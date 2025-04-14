@@ -30,9 +30,15 @@ export class Server {
             if (stat.isDirectory()) {
                 await this.loadRoutes(fullPath); // recursively load nested routes
             } else if (file.endsWith('.controller.js')) {
-                const routeModule = await import(pathToFileURL(fullPath));
-                this.server.register(routeModule.default);
-                console.log(`✅ Loaded route: ${file}`);
+                try {
+                    const routeModule = await import(pathToFileURL(fullPath));
+                    console.log('routeModule', routeModule);
+                    this.server.register(routeModule.default);
+                    console.log(`✅ Loaded route: ${file}`);
+                } catch (err) {
+                    console.log(err);
+                    console.error(`❌ Failed to load route: ${file}`, err);
+                }
             }
         }
     }

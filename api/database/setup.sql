@@ -1,3 +1,3 @@
 \i sql/utils.sql
-\i sql/users.sql
-\i sql/user_track.sql
+\i sql/account.sql
+\i sql/account_activity.sql

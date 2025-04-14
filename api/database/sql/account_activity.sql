@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS user_activity (
+CREATE TABLE IF NOT EXISTS account_activity (
     "id" TEXT PRIMARY KEY DEFAULT uuid62(),
-    "userId" TEXT REFERENCES user,
+    "accountId" TEXT REFERENCES account,
     "ipAddress" TEXT,
     "userAgent" TEXT,
     "location" TEXT,
@@ -12,4 +12,4 @@ CREATE TABLE IF NOT EXISTS user_activity (
     "deletedAt" TEXT
 );
 
-CREATE INDEX IF NOT EXISTS user_activity_userid_index ON user_activity ("userId");
+CREATE INDEX IF NOT EXISTS user_activity_userid_index ON account_activity ("accountId");
