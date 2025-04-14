@@ -22,10 +22,10 @@ const Path = () => {
     };
 
     return (
-        <div className="flex flex-col gap-4 gap-y-4 px-20">
-            <h1 className="italic">Config Folder path here...</h1>
+        <div className="flex flex-col gap-4 w-full">
+            <h1 className="text-2xl font-semibold mb-4">Config Folder Path</h1>
 
-            <div className="flex gap-4 items-center">
+            <div className="flex gap-4 items-center w-full">
                 <input
                     type="text"
                     className="input input-bordered rounded-md flex-grow"
@@ -33,13 +33,13 @@ const Path = () => {
                     value={selectedPath}
                     readOnly
                 />
-                <button className="btn btn-outline btn-primary rounded-md" onClick={handleBrowseClick}>
+                <button className="btn btn-outline btn-primary rounded-md whitespace-nowrap" onClick={handleBrowseClick}>
                     Browse
                 </button>
             </div>
 
             <button
-                className={`btn btn-outline btn-accent rounded-md ${mutation.isPending ? 'loading' : ''}`}
+                className={`btn btn-outline btn-accent rounded-md w-full max-w-xs ${mutation.isPending ? 'loading' : ''}`}
                 onClick={mutation.mutate}
                 disabled={!selectedPath || mutation.isPending}
             >

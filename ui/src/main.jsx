@@ -8,13 +8,16 @@ import './index.css';
 const queryClient = new QueryClient({
     defaultOptions: {
         queries: {
-            retry: 0
+            retry: 0,
+            refetchOnWindowFocus: false,
+            staleTime: 1000 * 60 * 5, // 5 minutes
         }
     }
 });
+
 createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={true} />
         <RouterProvider router={router} />
+        <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
 );
