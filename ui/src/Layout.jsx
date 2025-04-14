@@ -12,7 +12,7 @@ function Layout() {
             <nav className="py-4 border-b border-zinc-800 bg-black sticky top-0 z-50 shadow-lg">
                 <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
                     <Link
-                        className="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                        className="text-xl font-bold text-blue-400 hover:text-blue-300 transition-colors duration-300"
                         to="/"
                     >
                         Deploy-N-Chill
@@ -25,7 +25,7 @@ function Layout() {
                                     key={item.name}
                                     to={item.path}
                                     className={({ isActive }) =>
-                                        `text-base transition-all duration-300 relative group ${
+                                        `text-sm transition-all duration-300 relative group ${
                                             isActive 
                                                 ? 'text-white font-medium' 
                                                 : 'text-zinc-400 hover:text-zinc-200'

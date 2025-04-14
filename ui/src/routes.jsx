@@ -7,7 +7,7 @@ import Layout from './Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProjectDetail from './pages/ProjectDetail';
-import ProtectedRoute from './components/shared/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 import axios from 'axios';
 import Loading from './pages/Loading';
 

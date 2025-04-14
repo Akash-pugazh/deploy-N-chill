@@ -159,7 +159,7 @@ const ProjectCard = ({ project }) => {
             <div className="flex border-t border-gray-800/80 mt-auto">
                 <button
                     className={`
-                        flex items-center justify-center gap-1.5 flex-1 px-3 py-2.5 text-xs font-medium transition-all duration-200
+                        flex items-center justify-center gap-1.5 flex-1 px-3 py-2.5 text-xs font-medium transition-all duration-200 cursor-pointer
                         ${
                             isRunning
                                 ? 'hover:bg-red-500/10 text-red-400 hover:text-red-300'
@@ -173,7 +173,7 @@ const ProjectCard = ({ project }) => {
                 </button>
                 <div className="w-px bg-gray-800/80"></div>
                 <button
-                    className="flex items-center justify-center gap-1.5 flex-1 px-3 py-2.5 text-xs font-medium text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200"
+                    className="flex items-center justify-center gap-1.5 flex-1 px-3 py-2.5 text-xs font-medium text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-all duration-200 cursor-pointer"
                     onClick={(e) => handleButtonClick(e, () => console.log(`Pull updates for ${project.name}`))}
                 >
                     <Cloud className="w-4 h-4" />
